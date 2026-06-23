@@ -5,7 +5,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     public Image Image; //画像を入れるオブジェクト
     public Sprite title;//タイトル画像
-    public GameObject selans;
     public Text Q;//質問
     public Text sel1;//選択肢
     public Text sel2;
