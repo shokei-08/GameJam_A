@@ -700,15 +700,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Image: {fileID: 1878250104}
-  title: {fileID: 0}
   Q: {fileID: 330422991}
   SENTAKUSI: 2
+  sel1T: {fileID: 998401097}
+  sel2T: {fileID: 1154017483}
+  sel3T: {fileID: 673681392}
+  sel4T: {fileID: 738787508}
+  sel5T: {fileID: 1515949849}
+  sel6T: {fileID: 2043504083}
   sel1: {fileID: 998401099}
   sel2: {fileID: 1154017485}
   sel3: {fileID: 673681394}
-  sel4: {fileID: 0}
-  sel5: {fileID: 0}
-  sel6: {fileID: 0}
+  sel4: {fileID: 738787509}
+  sel5: {fileID: 1515949850}
+  sel6: {fileID: 2043504084}
   selans: {fileID: 130622424}
 --- !u!4 &1018720700
 Transform:
@@ -1152,6 +1157,6 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1018720700}
   - {fileID: 519083323}
   - {fileID: 1322026749}
-  - {fileID: 1018720700}
