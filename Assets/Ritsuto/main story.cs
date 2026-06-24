@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public string SceneName;
-    public Image Image; //画像を入れるオブジェクト
     public Text Q;//質問
     public int SENTAKUSI = 2;
     public Text sel1;
@@ -29,6 +28,33 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int page = 0;
     int message = 0;
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
+    int TATIE = 0;
+
+    public Image bad1;
+    public Image bad2;
+    public Image bad3;
+    public Image bad4;
+    public Image bad5;
+
+    public Image chara1;
+    public Image chara2;
+    public Image chara3;
+    public Image chara4;
+    public Image chara5;
+    public Image chara6;
+    public Image chara7;
+    public Image chara8;
+    public Image chara9;
+    public Image chara10;
+    public Image chara11;
+    public Image chara12;
+    public Image chara13;
+    public Image chara14;
+    public Image chara15;
+    public Image chara16;
+    public Image chara17;
+    public Image chara18;
+    public Image chara19;
 
 
 
@@ -41,11 +67,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         message = 0;
         SENTAKUSI = 0;
         bunki = 0;
+        chara7.enabled = true;
 
-        img = Image.GetComponent<Image>();
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
         sel1.text = "はい";
         sel2.text = "いいえ";
+        chara19.enabled = false;
 
     }
 
@@ -57,6 +84,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
             PageUpdate();
             selNoR = 0;
             selNoC = 0;
+        }
+
+        switch (TATIE)
+        {
+            case 0:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 6:
+                break;
         }
 
         switch (SENTAKUSI)
@@ -388,7 +429,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    private void PageUpdate()   
+    private void PageUpdate()
     {
         if (page == 0)
         {
@@ -569,7 +610,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 SENTAKUSI = 0;
                 Q.text = "";    // 演出を後からがっちゃんこ
-                kekka = "?";
+                kekka = "B";
                 SceneManager.LoadScene(SceneName);
 
             }
@@ -584,44 +625,44 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 1)
             {
                 message++;
-                Q.text += "\n線路の上には、一台のトロッコが猛スピードで走っています。";
+                Q.text = "線路の上には、一台のトロッコが猛スピードで走っています。";
             }
-            else if (message == 1)
+            else if (message == 2)
             {
                 message++;
                 Q.text += "\nこのままでは、前方で作業している五人がはねられてしまいます。";
             }
-            else if (message == 1)
+            else if (message == 3)
             {
                 message++;
-                Q.text += "\nあなたの目の前には、線路を切り替えるレバーがあります。";
+                Q.text = "あなたの目の前には、線路を切り替えるレバーがあります。";
             }
-            else if (message == 1)
+            else if (message == 4)
             {
                 message++;
                 Q.text += "\nレバーを引けば、トロッコは別の線路へ進みます。";
             }
-            else if (message == 1)
+            else if (message == 5)
             {
                 message++;
-                Q.text += "\n——けれど、その線路の先にも、一人の人がいます。";
+                Q.text = "——けれど、その線路の先にも、一人の人がいます。";
             }
-            else if (message == 1)
+            else if (message == 6)
             {
                 message++;
                 Q.text += "\nあなたがレバーを引けば、一人が犠牲になり、五人が助かります。";
             }
-            else if (message == 1)
+            else if (message == 7)
             {
                 message++;
                 Q.text += "\n何もしなければ、五人が犠牲になります。";
             }
-            else if (message == 1)
+            else if (message == 8)
             {
                 message++;
-                Q.text += "\nあなたはどうしますか?";
+                Q.text = "あなたはどうしますか?";
             }
-            else if (message == 2)
+            else if (message == 9)
             {
                 message++;
                 SENTAKUSI = 4;
@@ -630,7 +671,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 sel3.text = "ミンナシンジャエ";
                 sel4.text = "■■■";
             }
-            else if (message == 3 && bunki == 1)
+            else if (message == 10)
             {
                 page++;
                 message = 0;
@@ -671,43 +712,38 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                bad1.enabled = true;
+                kekka = "C";
             }
             else if (message == 4 && bunki == 2)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                kekka = "C";
             }
             else if (message == 4 && bunki == 3)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                kekka = "D";
             }
             else if (message == 4 && bunki == 4)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                kekka = "C";
             }
             else if (message == 4 && bunki == 5)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                kekka = "C";
             }
-            else if (message == 4 && bunki == 5)
+            else if (message == 4 && bunki == 6)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "?";
-                SceneManager.LoadScene(SceneName);
+                kekka = "C";
             }
             else if (message == 5)
             {
