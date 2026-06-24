@@ -27,9 +27,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int page = 0;
     int message = 0;
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
-    int TATIE = 0;
+    public int time;
+    public bool torokko = false;
 
     public Image jansuke;
+    public Image haikeiB;
     public Image bad;
     public Image happy;
 
@@ -64,11 +66,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
         message = 0;
         SENTAKUSI = 0;
         bunki = 0;
+        time = 0;
+        torokko = false;
         chara7.enabled = true;
 
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
         sel1.text = "はい";
         sel2.text = "いいえ";
+    }
+
+    void FixedUpdate()
+    {
+        if(torokko)
+        {
+            time++;
+        }
     }
 
     // Update is called once per frame
@@ -77,22 +89,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PageUpdate();
-            selNoR = 0;
-            selNoC = 0;
-        }
-
-        switch (TATIE)
-        {
-            case 0:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 6:
-                break;
+            if (torokko == false)
+            {
+                selNoR = 0;
+                selNoC = 0;
+            }
         }
 
         switch (SENTAKUSI)
@@ -659,12 +660,19 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 9)
             {
-                message++;
+                torokko = true;
                 SENTAKUSI = 4;
                 sel1.text = "一人を犠牲にする";
                 sel2.text = "五人を見殺しにする";
                 sel3.text = "ミンナシンジャエ";
                 sel4.text = "■■■";
+
+                if(time >= 300)
+                {
+                    message++;
+                    SENTAKUSI = 0;
+                    jansuke.enabled = true;
+                }
             }
             else if (message == 10)
             {
@@ -672,7 +680,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 message = 0;
                 SENTAKUSI = 0;
                 bunki = 0;
-                Q.text = "";
+                jansuke.enabled = false;
+                torokko = false;
+                Q.text = "これ、最後の質問だよ。";
             }
         }
         else if (page == 6)
@@ -680,19 +690,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (message == 0)
             {
                 message++;
-                Q.text = "これ、最後の質問だよ。";
+                Q.text += "大事な質問。";
             }
             else if (message == 1)
             {
                 message++;
-                Q.text += "大事な質問。";
-            }
-            else if (message == 2)
-            {
-                message++;
                 Q.text += "\n私をどうやって殺しますか？(文字化け)";
             }
-            else if (message == 3)
+            else if (message == 2)
             {
                 message++;
                 SENTAKUSI = 6;
@@ -703,49 +708,49 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 sel5.text = "(文字化け)";
                 sel6.text = "(文字化け)";
             }
-            else if (message == 4 && bunki == 1)
+            else if (message == 3 && bunki == 1)
             {
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 2)
+            else if (message == 3 && bunki == 2)
             {
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 3)
+            else if (message == 3 && bunki == 3)
             {
                 message++;
                 SENTAKUSI = 0;
                 happy.enabled = true;
                 kekka = "D";
             }
-            else if (message == 4 && bunki == 4)
+            else if (message == 3 && bunki == 4)
             {
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 5)
+            else if (message == 3 && bunki == 5)
             {
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 6)
+            else if (message == 3 && bunki == 6)
             {
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 5)
+            else if (message == 4)
             {
                 SceneManager.LoadScene(SceneName);
             }
