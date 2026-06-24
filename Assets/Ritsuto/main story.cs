@@ -24,10 +24,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public GameObject selans;//選択肢が何を選んでいるか
     public static string kekka = "?";
     private Image img;
-    int selNo = 0;
+    int selNoR = 0;
+    int selNoC = 0;
     int page = 0;
     int message = 0;
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
+
 
 
 
@@ -53,6 +55,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PageUpdate();
+            selNoR = 0;
+            selNoC = 0;
         }
 
         switch (SENTAKUSI)
@@ -112,8 +116,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Transform sel5t = sel5.GetComponent<Transform>();
         Transform sel6t = sel6.GetComponent<Transform>();
 
-        sel1V3 = new Vector3(0, 217, 0);
-        sel2V3 = new Vector3(0, 75, 0);
+        sel1V3 = new Vector3(0, 145, 0);
+        sel2V3 = new Vector3(0, 5, 0);
         sel3V3 = MUSI;
         sel4V3 = MUSI;
         sel5V3 = MUSI;
@@ -128,27 +132,28 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (selNo > 0)
+            if (selNoR > 0)
             {
-                selNo--;
+                selNoR--;
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (selNo < SENTAKUSI - 1)
+            if (selNoR < 1)
             {
-                selNo++;
+                selNoR++;
             }
         }
-        switch (selNo)
+
+        switch (selNoR)
         {
             case 0:
                 sentaku.localPosition = sel1V3;
-                bunki = selNo + 1;
+                bunki = 1;
                 break;
             case 1:
                 sentaku.localPosition = sel2V3;
-                bunki = selNo + 1;
+                bunki = 2;
                 break;
         }
     }
@@ -179,31 +184,31 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (selNo > 0)
+            if (selNoR > 0)
             {
-                selNo--;
+                selNoR--;
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (selNo < SENTAKUSI - 1)
+            if (selNoR < 2)
             {
-                selNo++;
+                selNoR++;
             }
         }
-        switch (selNo)
+        switch (selNoR)
         {
             case 0:
                 sentaku.localPosition = sel1V3;
-                bunki = selNo + 1;
+                bunki = 1;
                 break;
             case 1:
                 sentaku.localPosition = sel2V3;
-                bunki = selNo + 1;
+                bunki = 2;
                 break;
             case 2:
                 sentaku.localPosition = sel3V3;
-                bunki = selNo + 1;
+                bunki = 3;
                 break;
         }
     }
@@ -218,10 +223,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Transform sel5t = sel5.GetComponent<Transform>();
         Transform sel6t = sel6.GetComponent<Transform>();
 
-        sel1V3 = new Vector3(0, 217, 0);
-        sel2V3 = new Vector3(0, 75, 0);
-        sel3V3 = new Vector3(0, -71, 0);
-        sel4V3 = MUSI;
+        sel1V3 = new Vector3(-600, 145, 0);
+        sel2V3 = new Vector3(-600, 5, 0);
+        sel3V3 = new Vector3(0, 145, 0);
+        sel4V3 = new Vector3(0, 5, 0);
         sel5V3 = MUSI;
         sel6V3 = MUSI;
 
@@ -234,31 +239,60 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (selNo > 0)
+            if (selNoR > 0)
             {
-                selNo--;
+                selNoR--;
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (selNo < SENTAKUSI - 1)
+            if (selNoR < 1)
             {
-                selNo++;
+                selNoR++;
             }
         }
-        switch (selNo)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (selNoC > 0)
+            {
+                selNoC--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (selNoC < 1)
+            {
+                selNoC++;
+            }
+        }
+
+        switch (selNoC)
         {
             case 0:
-                sentaku.localPosition = sel1V3;
-                bunki = selNo + 1;
+                switch (selNoR)
+                {
+                    case 0:
+                        sentaku.localPosition = sel1V3;
+                        bunki = 1;
+                        break;
+                    case 1:
+                        sentaku.localPosition = sel2V3;
+                        bunki = 2;
+                        break;
+                }
                 break;
             case 1:
-                sentaku.localPosition = sel2V3;
-                bunki = selNo + 1;
-                break;
-            case 2:
-                sentaku.localPosition = sel3V3;
-                bunki = selNo + 1;
+                switch (selNoR)
+                {
+                    case 0:
+                        sentaku.localPosition = sel3V3;
+                        bunki = 3;
+                        break;
+                    case 1:
+                        sentaku.localPosition = sel4V3;
+                        bunki = 4;
+                        break;
+                }
                 break;
         }
     }
@@ -273,12 +307,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Transform sel5t = sel5.GetComponent<Transform>();
         Transform sel6t = sel6.GetComponent<Transform>();
 
-        sel1V3 = new Vector3(0, 217, 0);
-        sel2V3 = new Vector3(0, 75, 0);
-        sel3V3 = new Vector3(0, -71, 0);
-        sel4V3 = MUSI;
-        sel5V3 = MUSI;
-        sel6V3 = MUSI;
+        sel1V3 = new Vector3(-600, 217, 0);
+        sel2V3 = new Vector3(-600, 75, 0);
+        sel3V3 = new Vector3(-600, -71, 0);
+        sel4V3 = new Vector3(0, 217, 0);
+        sel5V3 = new Vector3(0, 75, 0);
+        sel6V3 = new Vector3(0, -71, 0);
 
         sel1t.localPosition = sel1V3;
         sel2t.localPosition = sel2V3;
@@ -289,36 +323,73 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (selNo > 0)
+            if (selNoR > 0)
             {
-                selNo--;
+                selNoR--;
             }
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (selNo < SENTAKUSI - 1)
+            if (selNoR < 2)
             {
-                selNo++;
+                selNoR++;
             }
         }
-        switch (selNo)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (selNoC > 0)
+            {
+                selNoC--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (selNoC < 1)
+            {
+                selNoC++;
+            }
+        }
+        switch (selNoC)
         {
             case 0:
-                sentaku.localPosition = sel1V3;
-                bunki = selNo + 1;
+                switch (selNoR)
+                {
+                    case 0:
+                        sentaku.localPosition = sel1V3;
+                        bunki = 1;
+                        break;
+                    case 1:
+                        sentaku.localPosition = sel2V3;
+                        bunki = 2;
+                        break;
+                    case 2:
+                        sentaku.localPosition = sel3V3;
+                        bunki = 3;
+                        break;
+                }
                 break;
             case 1:
-                sentaku.localPosition = sel2V3;
-                bunki = selNo + 1;
-                break;
-            case 2:
-                sentaku.localPosition = sel3V3;
-                bunki = selNo + 1;
+                switch (selNoR)
+                {
+                    case 0:
+                        sentaku.localPosition = sel4V3;
+                        bunki = 4;
+                        break;
+                    case 1:
+                        sentaku.localPosition = sel5V3;
+                        bunki = 5;
+                        break;
+                    case 2:
+                        sentaku.localPosition = sel6V3;
+                        bunki = 6;
+                        break;
+                }
                 break;
         }
     }
 
-    private void PageUpdate()   {
+    private void PageUpdate()   
+    {
         if (page == 0)
         {
             if (message == 0)
@@ -513,7 +584,42 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 1)
             {
                 message++;
-                Q.text += "";
+                Q.text += "\n線路の上には、一台のトロッコが猛スピードで走っています。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nこのままでは、前方で作業している五人がはねられてしまいます。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nあなたの目の前には、線路を切り替えるレバーがあります。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nレバーを引けば、トロッコは別の線路へ進みます。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\n——けれど、その線路の先にも、一人の人がいます。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nあなたがレバーを引けば、一人が犠牲になり、五人が助かります。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\n何もしなければ、五人が犠牲になります。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nあなたはどうしますか?";
             }
             else if (message == 2)
             {
