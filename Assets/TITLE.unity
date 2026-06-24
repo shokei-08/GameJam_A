@@ -966,7 +966,7 @@ MonoBehaviour:
   selAns: {fileID: 1242964645}
   select1: {fileID: 858634156}
   select2: {fileID: 781148057}
-  Game: 
+  Game: game Main story
   End: END
   Credit: CREDIT
 --- !u!4 &1676447000
