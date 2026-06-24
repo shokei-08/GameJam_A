@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yuzuki_M/SAMPLE.scene.unity
     guid: 237bcc216da21944eb943b89ae0dc6aa
+  - enabled: 1
+    path: Assets/Ritsuto/game Main story.unity
+    guid: 2a812e8c4a482fb4c8de2f31b737414c
+  - enabled: 1
+    path: Assets/Kaneki/SindanKekka.unity
+    guid: 951c061e4119a384a9c2decfbf077821
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
