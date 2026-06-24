@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yuzuki_M/CREDIT.unity
     guid: 6e78a365e1dc50849be4e8bbf97cd767
+  - enabled: 1
+    path: Assets/Kaneki/SindanKekka.unity
+    guid: 951c061e4119a384a9c2decfbf077821
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
