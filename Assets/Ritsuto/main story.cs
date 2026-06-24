@@ -22,7 +22,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private Vector3 sel6V3;
     private Vector3 MUSI = new Vector3(0, 700, 0);  // 選択肢を使わない場合の選択肢の座標
     public GameObject selans;//選択肢が何を選んでいるか
-    public static string kekka;
+    public static string kekka = "?";
     private Image img;
     int selNo = 0;
     int page = 0;

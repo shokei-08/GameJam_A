@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class SKManager : MonoBehaviour
 {
-    public string KEKKA = "A";
-
     public Text NameText;
     public Text NaiyouText;
 
@@ -12,6 +10,8 @@ public class SKManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        string KEKKA = NewMonoBehaviourScript.kekka;
+
         switch (KEKKA)
         {
             case "A":
