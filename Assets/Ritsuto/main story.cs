@@ -4,7 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    private AudioSource bgmAudio;
+    private AudioSource seAudio;
+    string bgmSwitch = "";
+    bool seSwitch = false;
     public string SceneName;
+    public string EnsyutuSceneName;
     public Text Q;//質問
     public int SENTAKUSI = 2;
     public Text sel1;
@@ -27,34 +32,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int page = 0;
     int message = 0;
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
-    int TATIE = 0;
+    public int time;
+    public bool torokko = false;
 
     public Image jansuke;
+    public Image haikeiB;
     public Image bad;
     public Image happy;
 
-    public Image chara1;
-    public Image chara2;
-    public Image chara3;
-    public Image chara4;
-    public Image chara5;
-    public Image chara6;
-    public Image chara7;
-    public Image chara8;
-    public Image chara9;
-    public Image chara10;
-    public Image chara11;
-    public Image chara12;
-    public Image chara13;
-    public Image chara14;
-    public Image chara15;
-    public Image chara16;
-    public Image chara17;
-    public Image chara18;
-    public Image chara19;
+    private GameObject obj;
+    private Image imgMAE;
+    private Image imgIMA;
 
-
-
+    [SerializeField] private AudioSource tujoAudio;
+    [SerializeField] private AudioSource horrorAudio;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,11 +55,52 @@ public class NewMonoBehaviourScript : MonoBehaviour
         message = 0;
         SENTAKUSI = 0;
         bunki = 0;
-        chara7.enabled = true;
+        time = 0;
+        torokko = false;
+        obj = GameObject.Find("haikeiB");
+        imgMAE = obj.GetComponent<Image>();
+        obj = GameObject.Find("Charactor7");
+        imgIMA = obj.GetComponent<Image>();
+        imgIMA.enabled = true;
+
 
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
-        sel1.text = "はい";
-        sel2.text = "いいえ";
+    }
+
+    void FixedUpdate()
+    {
+        if (time == 300)
+        {
+            tujoAudio.Stop();
+            horrorAudio.Play();
+            message++;
+            SENTAKUSI = 0;
+            jansuke.enabled = true;
+        }
+        if (time == 350)
+        {
+            Q.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel1.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel2.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel3.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel4.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel5.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            sel6.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+            time = 0;
+            page++;
+            message = 0;
+            SENTAKUSI = 0;
+            bunki = 0;
+            jansuke.enabled = false;
+            haikeiB.enabled = true;
+            torokko = false;
+            Q.text = "これ、最後の質問だよ。";
+        }
+
+        if (torokko)
+        {
+            time++;
+        }
     }
 
     // Update is called once per frame
@@ -77,22 +109,35 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             PageUpdate();
-            selNoR = 0;
-            selNoC = 0;
-        }
-
-        switch (TATIE)
-        {
-            case 0:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 6:
-                break;
+            if (torokko == false)
+            {
+                selNoR = 0;
+                selNoC = 0;
+            }
+            switch (bgmSwitch)
+            {
+                case "":
+                    break;
+                case "tujo":
+                    horrorAudio.Stop();
+                    tujoAudio.Play();
+                    bgmSwitch = "";
+                    break;
+                case "horror":
+                    tujoAudio.Stop();
+                    horrorAudio.Play();
+                    bgmSwitch = "";
+                    break;
+            }
+            switch (seSwitch)
+            {
+                case false:
+                    break;
+                case true:
+                    seAudio.Play();
+                    seSwitch = false;
+                    break;
+            }
         }
 
         switch (SENTAKUSI)
@@ -437,6 +482,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 1 && bunki == 1)
             {
+                TATIEhenkou("Charactor1");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -516,6 +562,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 1)
             {
+                TATIEhenkou("Charactor1");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -524,6 +571,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 2)
             {
+                TATIEhenkou("Charactor1");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -604,9 +652,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 5 && bunki == 2)
             {
                 SENTAKUSI = 0;
-                Q.text = "";    // 演出を後からがっちゃんこ
                 kekka = "B";
-                SceneManager.LoadScene(SceneName);
+                SceneManager.LoadScene(EnsyutuSceneName);
 
             }
         }
@@ -659,20 +706,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 9)
             {
-                message++;
+                torokko = true;
                 SENTAKUSI = 4;
                 sel1.text = "一人を犠牲にする";
                 sel2.text = "五人を見殺しにする";
                 sel3.text = "ミンナシンジャエ";
                 sel4.text = "■■■";
-            }
-            else if (message == 10)
-            {
-                page++;
-                message = 0;
-                SENTAKUSI = 0;
-                bunki = 0;
-                Q.text = "";
             }
         }
         else if (page == 6)
@@ -680,76 +719,97 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (message == 0)
             {
                 message++;
-                Q.text = "これ、最後の質問だよ。";
+                Q.text += "大事な質問。";
             }
             else if (message == 1)
             {
                 message++;
-                Q.text += "大事な質問。";
+                Q.text += "\n私をどうやって殺しますか？(文字化け)";
             }
             else if (message == 2)
             {
                 message++;
-                Q.text += "\n私をどうやって殺しますか？(文字化け)";
-            }
-            else if (message == 3)
-            {
-                message++;
                 SENTAKUSI = 6;
-                sel1.text = "(文字化け)";
-                sel2.text = "(文字化け)";
-                sel3.text = "(文字化け)";
-                sel4.text = "(文字化け)";
-                sel5.text = "(文字化け)";
-                sel6.text = "(文字化け)";
+                sel1.text = "繧ｸ繝･繧ｦ繧ｵ縺､";  // 銃殺
+                sel2.text = "繧ｷ繧ｵ縺､";        // 刺殺
+                sel3.text = "谿ｺ繧ｵ繝翫う";     // 殺さない
+                sel4.text = "繝懊け繧ｵ縺､";     // 撲殺
+                sel5.text = "縺ｧ縺阪＠";        // 溺死
+                sel6.text = "繧ｳ繧ｦ繧ｵ縺､";     // 絞殺
             }
-            else if (message == 4 && bunki == 1)
+            else if (message == 3 && bunki == 1)
             {
+                GameObject SE = GameObject.Find("se192810");
+                seAudio = SE.GetComponent<AudioSource>();
+                seSwitch = true;
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 2)
+            else if (message == 3 && bunki == 2)
             {
+                GameObject SE = GameObject.Find("se1703623");
+                seSwitch = true;
+                seAudio = SE.GetComponent<AudioSource>();
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 3)
+            else if (message == 3 && bunki == 3)
             {
+                bgmSwitch = "tujo";
                 message++;
                 SENTAKUSI = 0;
                 happy.enabled = true;
                 kekka = "D";
             }
-            else if (message == 4 && bunki == 4)
+            else if (message == 3 && bunki == 4)
             {
+                GameObject SE = GameObject.Find("se1021388");
+                seSwitch = true;
+                seAudio = SE.GetComponent<AudioSource>();
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 5)
+            else if (message == 3 && bunki == 5)
             {
+                GameObject SE = GameObject.Find("se1687165");
+                seSwitch = true;
+                seAudio = SE.GetComponent<AudioSource>();
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 4 && bunki == 6)
+            else if (message == 3 && bunki == 6)
             {
+                GameObject SE = GameObject.Find("se91585");
+                seAudio = SE.GetComponent<AudioSource>();
+                seSwitch = true;
                 message++;
                 SENTAKUSI = 0;
                 bad.enabled = true;
                 kekka = "C";
             }
-            else if (message == 5)
+            else if (message == 4)
             {
                 SceneManager.LoadScene(SceneName);
             }
         }
+    }
+
+    private void TATIEhenkou(string TATIEname)
+    {
+        imgMAE = obj.GetComponent<Image>();
+        obj = GameObject.Find(TATIEname);
+        imgIMA = obj.GetComponent<Image>();
+
+        imgMAE.enabled = false;
+        imgIMA.enabled = true;
     }
 }
 
