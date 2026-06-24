@@ -43,26 +43,26 @@ public class SKManager : MonoBehaviour
 
     private void StateA()
     {
-        NameText.text = "結果A";
-        NaiyouText.text = "結果内容A";
+        NameText.text = "もう少し心を開こうend";
+        NaiyouText.text = "オマエはもう少し人と会話したほうがいいクマ！\r\n早とちりは感心しないクマよ。話し合いはコミュニケーションの基本、精進するクマ！";
     }
 
     private void StateB()
     {
-        NameText.text = "結果B";
-        NaiyouText.text = "結果内容B";
+        NameText.text = "気の利く人間になれend";
+        NaiyouText.text = "あの流れでいいえを選ぶなんて信じられないクマ！\r\nオマエには人の心がないのかクマ？そんなやつはろくな死に方しないクマよ！";
     }
 
     private void StateC()
     {
-        NameText.text = "結果C";
-        NaiyouText.text = "結果内容C";
+        NameText.text = "殺害end";
+        NaiyouText.text = "あ～あ、やっぱり殺しちゃったクマね！\r\nあれだけ大事だと念押しされたのに適当に選ぶからこうなるクマ！\r\nこれとは違った未来もあったかもしれないのに…ヒドいやつクマ！";
     }
 
     private void StateD()
     {
-        NameText.text = "結果D";
-        NaiyouText.text = "結果内容D";
+        NameText.text = "まじめだねend";
+        NaiyouText.text = "オマエはくそまじめか運がいいかのどっちかクマ！\r\nでも、殺さない選択肢を見つけたのは素直に褒めるクマよ！\r\nその調子ならなんかいいことあるかもクマね！";
     }
 
     private void StateE()

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public string SceneName;
-    public Image Image; //画像を入れるオブジェクト
     public Text Q;//質問
     public int SENTAKUSI = 2;
     public Text sel1;
@@ -31,6 +30,32 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
     int TATIE = 0;
 
+    public Image bad1;
+    public Image bad2;
+    public Image bad3;
+    public Image bad4;
+    public Image bad5;
+
+    public Image chara1;
+    public Image chara2;
+    public Image chara3;
+    public Image chara4;
+    public Image chara5;
+    public Image chara6;
+    public Image chara7;
+    public Image chara8;
+    public Image chara9;
+    public Image chara10;
+    public Image chara11;
+    public Image chara12;
+    public Image chara13;
+    public Image chara14;
+    public Image chara15;
+    public Image chara16;
+    public Image chara17;
+    public Image chara18;
+    public Image chara19;
+
 
 
 
@@ -42,11 +67,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         message = 0;
         SENTAKUSI = 0;
         bunki = 0;
+        chara7.enabled = true;
 
-        img = Image.GetComponent<Image>();
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
         sel1.text = "はい";
         sel2.text = "いいえ";
+        chara19.enabled = false;
 
     }
 
@@ -403,7 +429,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    private void PageUpdate()   
+    private void PageUpdate()
     {
         if (page == 0)
         {
@@ -686,42 +712,41 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 message++;
                 SENTAKUSI = 0;
+                bad1.enabled = true;
                 kekka = "C";
-                SceneManager.LoadScene(SceneName);
             }
             else if (message == 4 && bunki == 2)
             {
                 message++;
                 SENTAKUSI = 0;
                 kekka = "C";
-                SceneManager.LoadScene(SceneName);
             }
             else if (message == 4 && bunki == 3)
             {
                 message++;
                 SENTAKUSI = 0;
-                kekka = "C";
-                SceneManager.LoadScene(SceneName);
+                kekka = "D";
             }
             else if (message == 4 && bunki == 4)
             {
                 message++;
                 SENTAKUSI = 0;
                 kekka = "C";
-                SceneManager.LoadScene(SceneName);
             }
             else if (message == 4 && bunki == 5)
             {
                 message++;
                 SENTAKUSI = 0;
                 kekka = "C";
-                SceneManager.LoadScene(SceneName);
             }
             else if (message == 4 && bunki == 6)
             {
                 message++;
                 SENTAKUSI = 0;
                 kekka = "C";
+            }
+            else if (message == 5)
+            {
                 SceneManager.LoadScene(SceneName);
             }
         }
