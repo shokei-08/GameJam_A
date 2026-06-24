@@ -16,6 +16,11 @@ public class Title : MonoBehaviour
     private Image img;
     int selNo = 0;　　　　//選択中の答え
 
+    [Header("scene名")]
+    public string Game;
+    public string End;
+    public string Credit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,18 +35,23 @@ public class Title : MonoBehaviour
         {
             if (selNo == 0)
             {
-                SceneManager.LoadScene("");
+                SceneManager.LoadScene(Game);
             }
 
             if (selNo == 1)
             {
-                SceneManager.LoadScene("SAMPLE.scene");
+                SceneManager.LoadScene(End);
+            }
+
+            if (selNo == 2)
+            {
+                SceneManager.LoadScene(Credit);
             }
 
         }
 
-            //上キーを押したとき
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+        //上キーを押したとき
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (selNo > 0) selNo--;  //一つ上がる
         }
@@ -56,13 +66,15 @@ public class Title : MonoBehaviour
         Transform transform = selAns.GetComponent<Transform>();
         switch (selNo)
         {
-            case 0:　//1番目の答え
-                transform.localPosition = new Vector3(0, -195, 0);
+            case 0:　//「はじめる」選択中
+                transform.localPosition = new Vector3(0, -115, 0);
                 break;
-            case 1:　//2番目の答え
-                transform.localPosition = new Vector3(0, -365, 0);
+            case 1:　//「やめる」選択中
+                transform.localPosition = new Vector3(0, -280, 0);
                 break;
-
+            case 2:　//「クレジット」選択中
+                transform.localPosition = new Vector3(0, -440, 0);
+                break;
         }
 
 
