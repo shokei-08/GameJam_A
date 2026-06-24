@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int selNo = 0;
     int page = 0;
     int message = 0;
+    int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
 
 
 
@@ -34,9 +36,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         page = 0;
         message = 0;
+        SENTAKUSI = 0;
+        bunki = 0;
 
         img = Image.GetComponent<Image>();
-        SENTAKUSI = 0;
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
         sel1.text = "はい";
         sel2.text = "いいえ";
@@ -46,6 +49,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            PageUpdate();
+        }
+
         switch (SENTAKUSI)
         {
             case 0:
@@ -117,10 +125,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         sel5t.localPosition = sel5V3;
         sel6t.localPosition = sel6V3;
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            page++;
-        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (selNo > 0)
@@ -139,9 +143,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             case 0:
                 sentaku.localPosition = sel1V3;
+                bunki = selNo + 1;
                 break;
             case 1:
                 sentaku.localPosition = sel2V3;
+                bunki = selNo + 1;
                 break;
         }
     }
@@ -170,10 +176,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         sel5t.localPosition = sel5V3;
         sel6t.localPosition = sel6V3;
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            page++;
-        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (selNo > 0)
@@ -192,13 +194,204 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             case 0:
                 sentaku.localPosition = sel1V3;
+                bunki = selNo + 1;
                 break;
             case 1:
                 sentaku.localPosition = sel2V3;
+                bunki = selNo + 1;
                 break;
             case 2:
                 sentaku.localPosition = sel3V3;
+                bunki = selNo + 1;
                 break;
+        }
+    }
+
+    private void PageUpdate()
+    {
+        if(page == 0)
+        {
+            if (message == 0)
+            {
+                message++;
+                SENTAKUSI = 2;
+                sel1.text = "はい";
+                sel2.text = "いいえ";
+            }
+            else if (message == 1 && bunki == 1)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "やったー！アイと診断ゲームしてくれるんだ！";
+            }
+            else if (message == 1 && bunki == 2)
+            {
+                SENTAKUSI = 0;
+                bunki = 0;
+                kekka = "A";
+                SceneManager.LoadScene("SindanKekka");
+            }
+        }
+        else if (page == 1)
+        {
+            if (message == 0)
+            {
+                message++;
+                Q.text = "じゃあまずは１問目ね！";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nおにいさんはアイのこと好き？";
+            }
+            else if (message == 2)
+            {
+                message++;
+                SENTAKUSI = 3;
+                sel1.text = "好き";
+                sel2.text = "普通";
+                sel3.text = "嫌い";
+            }
+            else if (message == 3 && bunki == 1)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "やった！アイとっても嬉しい！";
+            }
+            else if (message == 3 && bunki == 2)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "そっか～…じゃあ好きになってもらえるように頑張るね！";
+            }
+            else if (message == 3 && bunki == 3)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "う～ん…そ、そうだよね、まだ会ったばっかりだもんね";
+            }
+        }
+        else if (page == 2)
+        {
+            if (message == 0)
+            {
+                message++;
+                Q.text = "次は２問目ね";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nおにいさんは人を好きになるとき見た目と中身どっちが大事？";
+            }
+            else if (message == 2)
+            {
+                message++;
+                SENTAKUSI = 2;
+                sel1.text = "見た目";
+                sel2.text = "中身";
+            }
+            else if (message == 3 && bunki == 1)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "見た目はとっても大事だよね！";
+            }
+            else if (message == 3 && bunki == 2)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "中身を大事にするのとっても素敵だな～";
+            }
+        }
+        else if (page == 3)
+        {
+            if (message == 0)
+            {
+                message++;
+                Q.text = "３問目…";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\n最近嫌な夢見た？";
+            }
+            else if (message == 2)
+            {
+                message++;
+                Q.text += "\n追われる夢とか…";
+            }
+            else if (message == 3)
+            {
+                message++;
+                SENTAKUSI = 2;
+                sel1.text = "はい";
+                sel2.text = "いいえ";
+            }
+            else if (message == 4)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "・・・・・・";
+            }
+        }
+        else if (page == 4)
+        {
+            if (message == 0)
+            {
+                message++;
+                Q.text = "ふふふ！、診断ゲーム楽しいね";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "\nおにいさんも楽しい？";
+            }
+            else if (message == 2)
+            {
+                message++;
+                Q.text += "ふふふ！、診断ゲーム楽しいね\nおにいさんも楽しい？楽しいよね？\n永遠に続けたくなってきたんじゃない？";
+            }
+            else if (message == 3)
+            {
+                message++;
+                Q.text += "ふふふ！、診断ゲーム楽しいね\nおにいさんも楽しい？楽しいよね？\n永遠に続けたくなってきたんじゃない？";
+            }
+            else if (message == 4)
+            {
+                message++;
+                SENTAKUSI = 2;
+                sel1.text = "はい";
+                sel2.text = "いいえ";
+            }
+            else if (message == 5)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "・・・・・・";
+            }
+        }
+        else if (page == 5)
+        {
+            if (message == 0)
+            {
+                message++;
+            }
         }
     }
 }
