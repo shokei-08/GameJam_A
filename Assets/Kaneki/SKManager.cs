@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SKManager : MonoBehaviour
 {
+    public string SceneName;
+    public string SceneNameB;
+    string KEKKA = "";
     public Text NameText;
     public Text NaiyouText;
 
@@ -10,7 +14,7 @@ public class SKManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        string KEKKA = NewMonoBehaviourScript.kekka;
+        KEKKA = NewMonoBehaviourScript.kekka;
 
         switch (KEKKA)
         {
@@ -38,7 +42,17 @@ public class SKManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (KEKKA != "C")
+            {
+                SceneManager.LoadScene(SceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneNameB);
+            }
+        }
     }
 
     private void StateA()
