@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    public string SceneName;
     public Image Image; //画像を入れるオブジェクト
     public Text Q;//質問
     public int SENTAKUSI = 2;
@@ -19,7 +20,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private Vector3 sel4V3;
     private Vector3 sel5V3;
     private Vector3 sel6V3;
-    private Vector3 MUSI = new Vector3(0, 700, 0);
+    private Vector3 MUSI = new Vector3(0, 700, 0);  // 選択肢を使わない場合の選択肢の座標
     public GameObject selans;//選択肢が何を選んでいるか
     public static string kekka;
     private Image img;
@@ -66,10 +67,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 S3();
                 break;
             case 4:
-                break;
-            case 5:
+                S4();
                 break;
             case 6:
+                S6();
                 break;
         }
     }
@@ -207,9 +208,118 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
     }
 
-    private void PageUpdate()
+    private void S4()
     {
-        if(page == 0)
+        Transform sentaku = selans.GetComponent<Transform>();
+        Transform sel1t = sel1.GetComponent<Transform>();
+        Transform sel2t = sel2.GetComponent<Transform>();
+        Transform sel3t = sel3.GetComponent<Transform>();
+        Transform sel4t = sel4.GetComponent<Transform>();
+        Transform sel5t = sel5.GetComponent<Transform>();
+        Transform sel6t = sel6.GetComponent<Transform>();
+
+        sel1V3 = new Vector3(0, 217, 0);
+        sel2V3 = new Vector3(0, 75, 0);
+        sel3V3 = new Vector3(0, -71, 0);
+        sel4V3 = MUSI;
+        sel5V3 = MUSI;
+        sel6V3 = MUSI;
+
+        sel1t.localPosition = sel1V3;
+        sel2t.localPosition = sel2V3;
+        sel3t.localPosition = sel3V3;
+        sel4t.localPosition = sel4V3;
+        sel5t.localPosition = sel5V3;
+        sel6t.localPosition = sel6V3;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (selNo > 0)
+            {
+                selNo--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (selNo < SENTAKUSI - 1)
+            {
+                selNo++;
+            }
+        }
+        switch (selNo)
+        {
+            case 0:
+                sentaku.localPosition = sel1V3;
+                bunki = selNo + 1;
+                break;
+            case 1:
+                sentaku.localPosition = sel2V3;
+                bunki = selNo + 1;
+                break;
+            case 2:
+                sentaku.localPosition = sel3V3;
+                bunki = selNo + 1;
+                break;
+        }
+    }
+
+    private void S6()
+    {
+        Transform sentaku = selans.GetComponent<Transform>();
+        Transform sel1t = sel1.GetComponent<Transform>();
+        Transform sel2t = sel2.GetComponent<Transform>();
+        Transform sel3t = sel3.GetComponent<Transform>();
+        Transform sel4t = sel4.GetComponent<Transform>();
+        Transform sel5t = sel5.GetComponent<Transform>();
+        Transform sel6t = sel6.GetComponent<Transform>();
+
+        sel1V3 = new Vector3(0, 217, 0);
+        sel2V3 = new Vector3(0, 75, 0);
+        sel3V3 = new Vector3(0, -71, 0);
+        sel4V3 = MUSI;
+        sel5V3 = MUSI;
+        sel6V3 = MUSI;
+
+        sel1t.localPosition = sel1V3;
+        sel2t.localPosition = sel2V3;
+        sel3t.localPosition = sel3V3;
+        sel4t.localPosition = sel4V3;
+        sel5t.localPosition = sel5V3;
+        sel6t.localPosition = sel6V3;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (selNo > 0)
+            {
+                selNo--;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (selNo < SENTAKUSI - 1)
+            {
+                selNo++;
+            }
+        }
+        switch (selNo)
+        {
+            case 0:
+                sentaku.localPosition = sel1V3;
+                bunki = selNo + 1;
+                break;
+            case 1:
+                sentaku.localPosition = sel2V3;
+                bunki = selNo + 1;
+                break;
+            case 2:
+                sentaku.localPosition = sel3V3;
+                bunki = selNo + 1;
+                break;
+        }
+    }
+
+    private void PageUpdate()   {
+        if (page == 0)
         {
             if (message == 0)
             {
@@ -229,9 +339,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 1 && bunki == 2)
             {
                 SENTAKUSI = 0;
-                bunki = 0;
                 kekka = "A";
-                SceneManager.LoadScene("SindanKekka");
+                SceneManager.LoadScene(SceneName);
             }
         }
         else if (page == 1)
@@ -363,12 +472,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 2)
             {
                 message++;
-                Q.text += "ふふふ！、診断ゲーム楽しいね\nおにいさんも楽しい？楽しいよね？\n永遠に続けたくなってきたんじゃない？";
+                Q.text += "楽しいよね？";
             }
             else if (message == 3)
             {
                 message++;
-                Q.text += "ふふふ！、診断ゲーム楽しいね\nおにいさんも楽しい？楽しいよね？\n永遠に続けたくなってきたんじゃない？";
+                Q.text += "\n永遠に続けたくなってきたんじゃない？";
             }
             else if (message == 4)
             {
@@ -377,13 +486,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 sel1.text = "はい";
                 sel2.text = "いいえ";
             }
-            else if (message == 5)
+            else if (message == 5 && bunki == 1)
             {
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
                 bunki = 0;
-                Q.text = "・・・・・・";
+                Q.text = "お兄さんが楽しんでくれてて嬉しいな！";
+            }
+            else if (message == 5 && bunki == 2)
+            {
+                SENTAKUSI = 0;
+                Q.text = "";    // 演出を後からがっちゃんこ
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+
             }
         }
         else if (page == 5)
@@ -391,6 +508,104 @@ public class NewMonoBehaviourScript : MonoBehaviour
             if (message == 0)
             {
                 message++;
+                Q.text = "ねえ、トロッコ問題って知ってる？";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "";
+            }
+            else if (message == 2)
+            {
+                message++;
+                SENTAKUSI = 4;
+                sel1.text = "一人を犠牲にする";
+                sel2.text = "五人を見殺しにする";
+                sel3.text = "ミンナシンジャエ";
+                sel4.text = "■■■";
+            }
+            else if (message == 3 && bunki == 1)
+            {
+                page++;
+                message = 0;
+                SENTAKUSI = 0;
+                bunki = 0;
+                Q.text = "";
+            }
+        }
+        else if (page == 6)
+        {
+            if (message == 0)
+            {
+                message++;
+                Q.text = "これ、最後の質問だよ。";
+            }
+            else if (message == 1)
+            {
+                message++;
+                Q.text += "大事な質問。";
+            }
+            else if (message == 2)
+            {
+                message++;
+                Q.text += "\n私をどうやって殺しますか？(文字化け)";
+            }
+            else if (message == 3)
+            {
+                message++;
+                SENTAKUSI = 6;
+                sel1.text = "(文字化け)";
+                sel2.text = "(文字化け)";
+                sel3.text = "(文字化け)";
+                sel4.text = "(文字化け)";
+                sel5.text = "(文字化け)";
+                sel6.text = "(文字化け)";
+            }
+            else if (message == 4 && bunki == 1)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 4 && bunki == 2)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 4 && bunki == 3)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 4 && bunki == 4)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 4 && bunki == 5)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 4 && bunki == 5)
+            {
+                message++;
+                SENTAKUSI = 0;
+                kekka = "?";
+                SceneManager.LoadScene(SceneName);
+            }
+            else if (message == 5)
+            {
+                SceneManager.LoadScene(SceneName);
             }
         }
     }

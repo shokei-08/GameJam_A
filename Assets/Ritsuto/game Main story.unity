@@ -774,6 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf47d070bb76b9a48b771ee123ae0867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneName: a
   Image: {fileID: 1878250104}
   Q: {fileID: 330422991}
   SENTAKUSI: 2
