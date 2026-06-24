@@ -22,7 +22,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private Vector3 MUSI = new Vector3(0, 700, 0);  // 選択肢を使わない場合の選択肢の座標
     public GameObject selans;//選択肢が何を選んでいるか
     public static string kekka = "?";
-    private Image img;
     int selNoR = 0;
     int selNoC = 0;
     int page = 0;
@@ -30,11 +29,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
     int TATIE = 0;
 
-    public Image bad1;
-    public Image bad2;
-    public Image bad3;
-    public Image bad4;
-    public Image bad5;
+    public Image jansuke;
+    public Image bad;
+    public Image happy;
 
     public Image chara1;
     public Image chara2;
@@ -72,8 +69,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Q.text = "ねぇ、アイとドキドキ恋愛診断ゲームしようよ！！";
         sel1.text = "はい";
         sel2.text = "いいえ";
-        chara19.enabled = false;
-
     }
 
     // Update is called once per frame
@@ -712,37 +707,42 @@ public class NewMonoBehaviourScript : MonoBehaviour
             {
                 message++;
                 SENTAKUSI = 0;
-                bad1.enabled = true;
+                bad.enabled = true;
                 kekka = "C";
             }
             else if (message == 4 && bunki == 2)
             {
                 message++;
                 SENTAKUSI = 0;
+                bad.enabled = true;
                 kekka = "C";
             }
             else if (message == 4 && bunki == 3)
             {
                 message++;
                 SENTAKUSI = 0;
+                happy.enabled = true;
                 kekka = "D";
             }
             else if (message == 4 && bunki == 4)
             {
                 message++;
                 SENTAKUSI = 0;
+                bad.enabled = true;
                 kekka = "C";
             }
             else if (message == 4 && bunki == 5)
             {
                 message++;
                 SENTAKUSI = 0;
+                bad.enabled = true;
                 kekka = "C";
             }
             else if (message == 4 && bunki == 6)
             {
                 message++;
                 SENTAKUSI = 0;
+                bad.enabled = true;
                 kekka = "C";
             }
             else if (message == 5)
