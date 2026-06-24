@@ -29,6 +29,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     int page = 0;
     int message = 0;
     int bunki = 0;  // どの分岐を選んだか(0は非選択肢用、1から使う)
+    int TATIE = 0;
 
 
 
@@ -57,6 +58,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
             PageUpdate();
             selNoR = 0;
             selNoC = 0;
+        }
+
+        switch (TATIE)
+        {
+            case 0:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 6:
+                break;
         }
 
         switch (SENTAKUSI)
