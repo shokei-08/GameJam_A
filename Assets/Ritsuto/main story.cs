@@ -59,7 +59,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         torokko = false;
         obj = GameObject.Find("haikeiB");
         imgMAE = obj.GetComponent<Image>();
-        obj = GameObject.Find("Charactor7");
+        obj = GameObject.Find("Charactor3");
         imgIMA = obj.GetComponent<Image>();
         imgIMA.enabled = true;
 
@@ -482,7 +482,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 1 && bunki == 1)
             {
-                TATIEhenkou("Charactor1");
+                TATIEhenkou("Charactor8");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -500,6 +500,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (message == 0)
             {
+                TATIEhenkou("Charactor3");
                 message++;
                 Q.text = "じゃあまずは１問目ね！";
             }
@@ -518,6 +519,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 1)
             {
+                TATIEhenkou("Charactor1");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -526,6 +528,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 2)
             {
+                TATIEhenkou("Charactor13");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -534,6 +537,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 3)
             {
+                TATIEhenkou("Charactor6");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -545,6 +549,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (message == 0)
             {
+                TATIEhenkou("Charactor3");
                 message++;
                 Q.text = "次は２問目ね";
             }
@@ -562,7 +567,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 1)
             {
-                TATIEhenkou("Charactor1");
+                TATIEhenkou("Charactor4");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -571,7 +576,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 3 && bunki == 2)
             {
-                TATIEhenkou("Charactor1");
+                TATIEhenkou("Charactor8");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -583,16 +588,19 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (message == 0)
             {
+                TATIEhenkou("Charactor7");
                 message++;
                 Q.text = "３問目…";
             }
             else if (message == 1)
             {
+                TATIEhenkou("Charactor2");
                 message++;
                 Q.text += "\n最近嫌な夢見た？";
             }
             else if (message == 2)
             {
+                TATIEhenkou("Charactor5");
                 message++;
                 Q.text += "\n追われる夢とか…";
             }
@@ -605,6 +613,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 4)
             {
+                TATIEhenkou("Charactor6");
                 page++;
                 message = 0;
                 SENTAKUSI = 0;
@@ -616,6 +625,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (message == 0)
             {
+                TATIEhenkou("Charactor16");
                 message++;
                 Q.text = "ふふふ！、診断ゲーム楽しいね";
             }
@@ -661,11 +671,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (message == 0)
             {
+                TATIEhenkou("Charactor3");
                 message++;
                 Q.text = "ねえ、トロッコ問題って知ってる？";
             }
             else if (message == 1)
             {
+                TATIEhenkou("Charactor2");
                 message++;
                 Q.text = "線路の上には、一台のトロッコが猛スピードで走っています。";
             }
@@ -701,6 +713,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
             else if (message == 8)
             {
+                TATIEhenkou("Charactor9");
                 message++;
                 Q.text = "あなたはどうしますか?";
             }

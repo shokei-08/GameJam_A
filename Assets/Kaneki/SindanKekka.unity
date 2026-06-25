@@ -405,8 +405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289.32, y: -96.90997}
-  m_SizeDelta: {x: 970.55, y: 461.23}
+  m_AnchoredPosition: {x: 285, y: -120}
+  m_SizeDelta: {x: 900, y: 460}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429426333
 MonoBehaviour:
@@ -430,7 +430,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -624,8 +624,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282.58, y: 188.81}
-  m_SizeDelta: {x: 957.06, y: 110.21}
+  m_AnchoredPosition: {x: 300, y: 175}
+  m_SizeDelta: {x: 957, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1811917908
 MonoBehaviour:
@@ -649,11 +649,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 47
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 2113928333}
   - component: {fileID: 2113928332}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HAIKEI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

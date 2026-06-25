@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/TITLE.unity
     guid: 2e1f94b6e924d584799d1ca02645d632
   - enabled: 1
+    path: Assets/TITLE_BAD.unity
+    guid: 8bee75cd232b8654dbcf6a05c1af0ba2
+  - enabled: 1
     path: Assets/Yuzuki_M/END.unity
     guid: 237bcc216da21944eb943b89ae0dc6aa
   - enabled: 1

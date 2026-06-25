@@ -2223,8 +2223,8 @@ MonoBehaviour:
   haikeiB: {fileID: 1707573094}
   bad: {fileID: 1697454675}
   happy: {fileID: 1176596352}
-  tujoAudio: {fileID: 0}
-  horrorAudio: {fileID: 0}
+  tujoAudio: {fileID: 1267745151}
+  horrorAudio: {fileID: 132676721}
 --- !u!4 &1018720700
 Transform:
   m_ObjectHideFlags: 0
