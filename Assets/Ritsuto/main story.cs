@@ -737,7 +737,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else if (message == 1)
             {
                 message++;
-                Q.text += "\n私をどうやって殺しますか？(文字化け)";
+                Q.text += "\n繝ｯ繧ｿ繧ｷをど繧ｦ繝､って谿ｺ繧ｷま縺吶°？";
             }
             else if (message == 2)
             {
