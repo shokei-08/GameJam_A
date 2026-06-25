@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image1: {fileID: 1786133295}
-  sprite1: {fileID: -421175829986938197, guid: de78914a291089f4fb938d95372107d1, type: 3}
+  sprite1: {fileID: 5744283250909046430, guid: 7715bc6372e56da4282e021c11fa2a92, type: 3}
   sprite2: {fileID: 1803123984186422494, guid: 027159d061400a84ba4afe60e32f6260, type: 3}
   sprite3: {fileID: 0}
 --- !u!1 &330842060
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -421175829986938197, guid: de78914a291089f4fb938d95372107d1, type: 3}
+  m_Sprite: {fileID: 5744283250909046430, guid: 7715bc6372e56da4282e021c11fa2a92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
